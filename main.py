@@ -55,15 +55,18 @@ decode_conversion = {
     "--..": "Z"
 }
 
-word = "HELLO"
-morse = ""
-for char in word:
-    morse += encode_conversion[char] + " "
-print(morse)
+def morse_to_text(text):
+    morse = ""
+    for char in text:
+        morse += encode_conversion[char] + " "
+    return morse
 
-morse_text = "- -.--"
-morse_words = morse_text.split(" ")
-output = ""
-for char_code in morse_words:
-    output += decode_conversion[char_code]
-print(output)
+def text_to_morse(morse):
+    morse_words = morse.split(" ")
+    output = ""
+    for char_code in morse_words:
+        output += decode_conversion[char_code]
+    return output
+
+print(morse_to_text("HELLO"))
+print(text_to_morse("- -.--"))
