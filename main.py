@@ -1,72 +1,14 @@
-encode_conversion = {
-    "A": ".-",
-    "B": "-...",
-    "C": "-.-.",
-    "D": "-..",
-    "E": ".",
-    "F": "..-.",
-    "G": "--.",
-    "H": "....",
-    "I": "..",
-    "J": ".---",
-    "K": "-.-",
-    "L": ".-..",
-    "M": "--",
-    "N": "-.",
-    "O": "---",
-    "P": ".--.",
-    "Q": "--.-",
-    "R": ".-.",
-    "S": "...",
-    "T": "-",
-    "U": "..-",
-    "V": "...-",
-    "W": ".--",
-    "X": "-..-",
-    "Y": "-.--",
-    "Z": "--.."
-}
+from helpers import text_to_morse, morse_to_audio, morse_to_text
+from sound import save_file
 
-decode_conversion = {
-    ".-": "A",
-    "-...": "B",
-    "-.-.": "C",
-    "-..": "D",
-    ".": "E",
-    "..-.": "F",
-    "--.": "G",
-    "....": "H",
-    "..": "I",
-    ".---": "J",
-    "-.-": "K",
-    ".-..": "L",
-    "--": "M",
-    "---": "O",
-    ".--.": "P",
-    "--.-": "Q",
-    ".-.": "R",
-    "...": "S",
-    "-": "T",
-    "..-": "U",
-    "...-": "V",
-    ".--": "W",
-    "-..-": "X",
-    "-.--": "Y",
-    "--..": "Z"
-}
+def encode(text, file_name):
+    morse = text_to_morse(text)
+    audio = morse_to_audio(morse)
+    save_file(file_name, audio)
 
-def morse_to_text(text):
-    morse = ""
-    for char in text:
-        morse += encode_conversion[char] + " "
-    return morse
 
-def text_to_morse(morse):
-    morse_words = morse.split(" ")
-    output = ""
-    for char_code in morse_words:
-        output += decode_conversion[char_code]
-    return output
+def decode(file_name):
+    # morse = audio_to_morse()
+    # morse_to_text(morse)
+    return
 
-print(morse_to_text("HELLO"))
-print(text_to_morse("- -.--"))
