@@ -1,14 +1,17 @@
-from helpers import text_to_morse, morse_to_audio, morse_to_text
-from sound import save_file
+import typer
+from morse import encode_file
 
-def encode(text, file_name):
-    morse = text_to_morse(text)
-    audio = morse_to_audio(morse)
-    save_file(file_name, audio)
+app = typer.Typer()
+
+@app.command()
+def encode(text: str, file_name: str):
+    encode_file(text, file_name)
+    print(f"Done! Check {file_name}")
 
 
-def decode(file_name):
-    # morse = audio_to_morse()
-    # morse_to_text(morse)
-    return
+@app.command()
+def decode(file_name: str):
+    print("Not worked on yet.")
 
+if __name__ == "__main__":
+    app()
