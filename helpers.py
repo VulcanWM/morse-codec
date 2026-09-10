@@ -1,73 +1,16 @@
 from sound import silence, tone, UNIT
 import numpy as np
-
-encode_conversion = {
-    "A": ".-",
-    "B": "-...",
-    "C": "-.-.",
-    "D": "-..",
-    "E": ".",
-    "F": "..-.",
-    "G": "--.",
-    "H": "....",
-    "I": "..",
-    "J": ".---",
-    "K": "-.-",
-    "L": ".-..",
-    "M": "--",
-    "N": "-.",
-    "O": "---",
-    "P": ".--.",
-    "Q": "--.-",
-    "R": ".-.",
-    "S": "...",
-    "T": "-",
-    "U": "..-",
-    "V": "...-",
-    "W": ".--",
-    "X": "-..-",
-    "Y": "-.--",
-    "Z": "--..",
-    ".": "/",
-}
-
-decode_conversion = {
-    ".-": "A",
-    "-...": "B",
-    "-.-.": "C",
-    "-..": "D",
-    ".": "E",
-    "..-.": "F",
-    "--.": "G",
-    "....": "H",
-    "..": "I",
-    ".---": "J",
-    "-.-": "K",
-    ".-..": "L",
-    "--": "M",
-    "---": "O",
-    ".--.": "P",
-    "--.-": "Q",
-    ".-.": "R",
-    "...": "S",
-    "-": "T",
-    "..-": "U",
-    "...-": "V",
-    ".--": "W",
-    "-..-": "X",
-    "-.--": "Y",
-    "--..": "Z",
-    "/": ".",
-}
+from mapping import encode_conversion, decode_conversion
 
 def text_to_morse(text):
+    text = text.upper()
     morse = ""
     for char in text:
         morse += encode_conversion[char] + " "
     return morse
 
 def morse_to_text(morse):
-    morse_words = morse.split(" ")
+    morse_words = morse.strip().split(" ")
     output = ""
     for char_code in morse_words:
         output += decode_conversion[char_code]

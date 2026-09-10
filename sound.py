@@ -21,4 +21,4 @@ def silence(duration):
     return np.zeros(int(SAMPLE_RATE * duration), dtype=np.int16)
 
 def save_file(file_name, audio):
-    write(f"${file_name}.wav", SAMPLE_RATE, audio)
+    write(f"{file_name}.wav", SAMPLE_RATE, audio)
