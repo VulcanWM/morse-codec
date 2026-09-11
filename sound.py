@@ -1,5 +1,5 @@
 import numpy as np
-from scipy.io.wavfile import write
+from scipy.io.wavfile import write, read
 
 SAMPLE_RATE = 44100
 FREQUENCY = 700
@@ -22,3 +22,7 @@ def silence(duration):
 
 def save_file(file_name, audio):
     write(f"{file_name}", SAMPLE_RATE, audio)
+
+def load_file(file_name):
+    sample_rate, audio = read(file_name)
+    return sample_rate, audio
